@@ -1,0 +1,55 @@
+name: "Generate fluttercandies profile/README.md"
+
+on:
+  schedule:
+    # Runs every 30 minutes
+    - cron: '0/30 0/1 * * *'
+  workflow_dispatch:
+
+env:
+  ORG: fluttercandies
+
+jobs:
+  make_org_repo_list:
+    runs-on: ubuntu-latest
+    name: Generate FlutterCandies .github/profile/README.md
+    steps:
+      - uses: caijinglong/action-org-repo-list@v1
+        id: org_repo_list
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          org: ${{ env.ORG }}
+          exclude-repo-names: '.github,.github-workflow'
+          wrap-with-details: true
+      - name: Generate README.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export TARGET_FILE=/tmp/.github/profile/README.md
+          gh repo clone ${{ env.ORG }}/.github /tmp/.github
+          cd /tmp/.github
+          if [ ! -d "profile" ]; then
+            mkdir profile
+          fi
+          if [ -f "$TARGET_FILE" ]; then
+            rm $TARGET_FILE
+          fi
+          touch $TARGET_FILE
+          echo "## Welcome to the Flutter Candies organization" >> $TARGET_FILE
+          echo "" >> $TARGET_FILE
+          echo "Custom Flutter Candies (packages) for you to build your Flutter app easily. Enjoy it!" >> $TARGET_FILE
+          echo "" >> $TARGET_FILE
+          echo "## Organization Repositories" >> $TARGET_FILE
+          echo "" >> $TARGET_FILE
+          echo "${{ steps.org_repo_list.outputs.table }}" >> $TARGET_FILE
+          echo "" >> $TARGET_FILE
+          echo "Created on $(date -Iseconds) by [action](https://github.com/CaiJingLong/action-org-repo-list.git)" >> $TARGET_FILE
+          echo "" >> $TARGET_FILE
+          gh auth setup-git -h github.com
+          git config --global user.email "fluttercandies@googlegroups.com"
+          git config --global user.name "fluttercandies-dev"
+          git add .
+          git commit -m "Update profile/README.md from CI"
+          git push
+    permissions:
+      contents: write
