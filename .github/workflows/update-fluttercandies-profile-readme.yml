@@ -1,9 +1,9 @@
 name: "Generate fluttercandies profile/README.md"
 
 on:
-  schedule:
+#  schedule:
     # Runs every 30 minutes
-    - cron: '0/30 0/1 * * *'
+#    - cron: '0/30 0/1 * * *'
   workflow_dispatch:
 
 env:
