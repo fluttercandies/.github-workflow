@@ -17,13 +17,13 @@ jobs:
       - uses: caijinglong/action-org-repo-list@v1
         id: org_repo_list
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PERSON_TOKEN }}
           org: ${{ env.ORG }}
           exclude-repo-names: '.github,.github-workflow'
           wrap-with-details: true
       - name: Generate README.md
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PERSON_TOKEN }}
         run: |
           export TARGET_FILE=/tmp/.github/profile/README.md
           gh repo clone ${{ env.ORG }}/.github /tmp/.github
@@ -51,5 +51,3 @@ jobs:
           git add .
           git commit -m "Update profile/README.md from CI"
           git push
-    permissions:
-      contents: write
