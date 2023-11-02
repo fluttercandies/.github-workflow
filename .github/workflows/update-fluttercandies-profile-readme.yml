@@ -28,6 +28,8 @@ jobs:
         run: |
           echo "${{ steps.org_repo_list.outputs.table }}" >> /tmp/TABLE.md
       - name: Generate README.md
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh repo clone ${{ env.ORG }}/.github /tmp/.github
           cd /tmp/.github
