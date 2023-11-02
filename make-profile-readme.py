@@ -10,6 +10,7 @@ with open(join(repo_path, template_file_name), 'r') as f:
 
 with open('/tmp/TABLE.md', 'r') as f:
     table = f.read()
+    table += '\n'
 
 
 dest_text = template.replace('<!-- REPO-LIST -->', table)
