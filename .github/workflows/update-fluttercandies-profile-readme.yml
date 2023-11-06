@@ -57,6 +57,7 @@ jobs:
           git commit -m "Update profile/README.md from CI"
           git push
   pub_dashboard_job:
+    needs: make_org_repo_list
     runs-on: ubuntu-latest
     name: pub-dashboard FlutterCandies .github/profile/README.md
     steps:
