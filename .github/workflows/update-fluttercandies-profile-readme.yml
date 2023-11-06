@@ -64,7 +64,7 @@ jobs:
         uses: AmosHuKe/pub-dashboard@v1
         with:
           github_token: ${{ secrets.PERSON_TOKEN }}
-          github_repo: "https://github.com/AmosHuKe/pub-dashboard"
+          github_repo: "https://github.com/fluttercandies/.github"
           filename: "profile/README.md"
           publisher_list: "fluttercandies.com"
           package_list: "flutter_tilt,scrollview_observer,dext,flutter_custom_calendar,draggable_container,flutter_filereader,flutter_image_compress,flutter_live_activities,harmony_os_version,nav_router,saver_gallery,upgrade_tool,w_popup_menu,w_reorder_list"
