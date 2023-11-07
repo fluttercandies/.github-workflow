@@ -56,3 +56,18 @@ jobs:
           git add .
           git commit -m "Update profile/README.md from CI"
           git push
+  pub_dashboard_job:
+    needs: make_org_repo_list
+    runs-on: ubuntu-latest
+    name: pub-dashboard FlutterCandies .github/profile/README.md
+    steps:
+      - name: run pub-dashboard
+        uses: AmosHuKe/pub-dashboard@v1.0.0
+        with:
+          github_token: ${{ secrets.PERSON_TOKEN }}
+          github_repo: "https://github.com/fluttercandies/.github"
+          filename: "profile/README.md"
+          publisher_list: "fluttercandies.com"
+          package_list: "flutter_tilt,scrollview_observer,dext,flutter_custom_calendar,draggable_container,flutter_filereader,flutter_image_compress,flutter_live_activities,harmony_os_version,nav_router,saver_gallery,upgrade_tool,w_popup_menu,w_reorder_list"
+          sort_field: "published"
+          sort_mode: "asc"
