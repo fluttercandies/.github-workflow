@@ -63,7 +63,7 @@ jobs:
     name: pub-dashboard FlutterCandies .github/profile/README.md
     steps:
       - name: run pub-dashboard
-        uses: AmosHuKe/pub-dashboard@v1.0.0
+        uses: AmosHuKe/pub-dashboard@main
         with:
           github_token: ${{ secrets.PERSON_TOKEN }}
           github_repo: "https://github.com/fluttercandies/.github"
