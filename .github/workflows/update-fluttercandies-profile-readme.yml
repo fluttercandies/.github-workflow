@@ -16,8 +16,8 @@ jobs:
     name: Generate FlutterCandies .github/profile/README.md
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - uses: caijinglong/action-org-repo-list@v1
+        uses: actions/checkout@900f2210b1d28bbbd0bd22d17926b9e224e8f231
+      - uses: caijinglong/action-org-repo-list@3a500accab30b78d3ff4668f5e983155d2fac2bd
         id: org_repo_list
         with:
           github-token: ${{ secrets.PERSON_TOKEN }}
@@ -63,7 +63,7 @@ jobs:
     name: pub-dashboard FlutterCandies .github/profile/README.md
     steps:
       - name: run pub-dashboard
-        uses: AmosHuKe/pub-dashboard@main
+        uses: AmosHuKe/pub-dashboard@24cb150a9b48e0001240c8cb6e9083daa87e80c2
         with:
           github_token: ${{ secrets.PERSON_TOKEN }}
           github_repo: "https://github.com/fluttercandies/.github"
