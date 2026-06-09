@@ -6,6 +6,9 @@ on:
     - cron: "0 0/4 * * *"
   workflow_dispatch:
 
+# Disable permissions for all of the available permissions
+permissions: {}
+
 env:
   ORG: fluttercandies
   TARGET_FILE: /tmp/.github/profile/README.md
