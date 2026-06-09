@@ -52,8 +52,8 @@ jobs:
           echo "${{github.workflow}}"
           echo "" >> $TARGET_FILE
           gh auth setup-git -h github.com
-          git config --global user.email "fluttercandies@googlegroups.com"
-          git config --global user.name "fluttercandies-dev"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           git add .
           git commit -m "Update profile/README.md from CI"
           git push
@@ -72,6 +72,4 @@ jobs:
           package_list: "flutter_tilt,scrollview_observer,dext,flutter_custom_calendar,draggable_container,flutter_filereader,flutter_image_compress,flutter_live_activities,harmony_os_version,nav_router,saver_gallery,upgrade_tool,w_popup_menu,w_reorder_list"
           sort_field: "published"
           sort_mode: "asc"
-          committer_username: "fluttercandies-dev"
-          committer_email: "fluttercandies@googlegroups.com" 
           commit_message: "Update profile/README.md from CI - pub_dashboard_job"
